@@ -22,7 +22,7 @@ app.use("/api/form", contactRoute);
 app.use("/api/data", serviceRoute);
 app.use("/api/admin", adminRoute);
 app.use(errorMiddleware);
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 connectDb().then(() => {
   app.listen(PORT, () => {
     console.log(`server is running at port: ${PORT}`);

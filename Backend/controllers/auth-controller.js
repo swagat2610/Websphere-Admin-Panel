@@ -16,7 +16,9 @@ const register = async (req, res) => {
     if (userExist) {
       return res.status(400).json({ message: "Email already exists" });
     }
+
     const userCreated = await User.create({ username, email, phone, password });
+
     // res.status(201).json({ message: "User registered successfully" });
     res.status(201).json({
       msg: "Registration Successful",
@@ -56,7 +58,7 @@ const login = async (req, res) => {
 
 const user = async (req, res) => {
   try {
-    const userData = req.user;    
+    const userData = req.user;
     return res.status(200).json({ userData });
   } catch (error) {
     console.log(` error from user route ${error}`);
