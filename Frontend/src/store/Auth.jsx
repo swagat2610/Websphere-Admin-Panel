@@ -25,12 +25,15 @@ export const AuthProvider = ({ children }) => {
 
   const userAuthentication = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/user", {
-        method: "GET",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/user`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         console.log("user data ", data.userdata);

@@ -6,12 +6,15 @@ const AdminUsers = () => {
   const { authorizationToken } = useAuth();
   const getAllUsersData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/admin/users", {
-        method: "GET",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/admin/users`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -22,7 +25,7 @@ const AdminUsers = () => {
   const deleteUser = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/users/delete/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/users/delete/${id}`,
         {
           method: "DELETE",
           headers: {

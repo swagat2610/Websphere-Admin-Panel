@@ -6,12 +6,15 @@ const AdminContacts = () => {
   const { authorizationToken } = useAuth();
   const getContactsData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/admin/contacts", {
-        method: "GET",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/admin/contacts`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         setContactData(data);
@@ -23,7 +26,7 @@ const AdminContacts = () => {
   const handleContactDelete = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/contacts/delete/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/contacts/delete/${id}`,
         {
           method: "DELETE",
           headers: {

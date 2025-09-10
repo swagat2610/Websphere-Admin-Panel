@@ -15,7 +15,7 @@ const AdminUpdate = () => {
   const getSingleUserData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/users/${params.id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/users/${params.id}`,
         {
           method: "GET",
           headers: {
@@ -53,7 +53,7 @@ const AdminUpdate = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/users/update/${params.id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/users/update/${params.id}`,
         {
           method: "PATCH",
           headers: {
